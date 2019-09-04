@@ -40,6 +40,12 @@ public class SwapiServiceImpl implements ISwapiService {
 		//Buscar personaje por nombre
 		DatosPersonajeResponse datos = buscarDatosDelPersonaje(nombre);
 		
+		//Comprobar si el nombre es exacto
+		if (!nombre.equals(datos.getName())) {
+			LOG.error("Error el nombre no concuerda");
+			throw new ErrorPruebasException(TipoError.ERROR_LLAMADA_PETICION_REST);
+		}
+		
 		//Buscar vehiculo mas rapido
 		DatosVehiculoResponse datosVehiculo = buscarDatosDelVehiculo(datos.getVehicles());
 		
@@ -54,7 +60,7 @@ public class SwapiServiceImpl implements ISwapiService {
 				datos.getBirthYear(),
 				datos.getGender(),
 				datosPlaneta.getName(),
-				datosVehiculo!=null ? datosVehiculo.getName(): null,
+				datosVehiculo!=null ? datosVehiculo.getName() : null,
 				PeliculasMapper.pasarDeRespuestaToVO(listaPeliculas));
 	}
 
@@ -85,7 +91,7 @@ public class SwapiServiceImpl implements ISwapiService {
 		LOG.debug(METHODNAME.concat(busqueda.toString()));
 		
 		//Comprobar resultado
-		if (busqueda.getCount()>1 && busqueda.getResults() == null) {
+		if (busqueda.getCount()!=1) {
 			LOG.error("Error duplicado");
 			throw new ErrorPruebasException(TipoError.ERROR_LLAMADA_PETICION_REST);
 		}
