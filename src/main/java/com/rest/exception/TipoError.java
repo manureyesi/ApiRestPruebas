@@ -3,7 +3,8 @@ package com.rest.exception;
 public enum TipoError {
 
 	OK(0, "OK"),
-	ERROR(1, "Error Generico");
+	ERROR(1, "Error Generico"),
+	ERROR_LLAMADA_PETICION_REST(2, "Error Peticion Rest");
 
 	private final Integer codigo;
 	private final String descripcion;

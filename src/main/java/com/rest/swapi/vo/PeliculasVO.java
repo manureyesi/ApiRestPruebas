@@ -17,15 +17,15 @@ public class PeliculasVO implements Serializable {
 	private String name;
 	
 	@JsonProperty("release_date")
-	private String release_date;
+	private String releaseDate;
 
 	/**
 	 * @param name
 	 * @param release_date
 	 */
-	public PeliculasVO(String name, String release_date) {
+	public PeliculasVO(String name, String releaseDate) {
 		this.name = name;
-		this.release_date = release_date;
+		this.releaseDate = releaseDate;
 	}
 
 	/**
@@ -45,15 +45,15 @@ public class PeliculasVO implements Serializable {
 	/**
 	 * @return the release_date
 	 */
-	public String getRelease_date() {
-		return release_date;
+	public String getReleaseDate() {
+		return releaseDate;
 	}
 
 	/**
 	 * @param release_date the release_date to set
 	 */
-	public void setRelease_date(String release_date) {
-		this.release_date = release_date;
+	public void setReleaseDate(String releaseDate) {
+		this.releaseDate = releaseDate;
 	}
 	
 	/**
